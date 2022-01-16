@@ -16,7 +16,6 @@ class App {
   #bool = false;
 
   constructor() {
-    // container.innerHTML = '';
     this._loadAPI();
 
     btnSearch.addEventListener('click', this._searchAPI.bind(this));
@@ -34,22 +33,22 @@ class App {
   }
 
   _render(what, where) {
-    // container.innerHTML = '';
+    container.innerHTML = '';
 
     what.forEach(planet => {
       const data = planet.created.slice(0, 10).split('-').reverse().join('-');
       const ora = planet.created.slice(11, 16);
       const formatted = `${data} ${ora}`;
 
-      // fai un clone della classe html .box
-      const cln = box.content.cloneNode(true);
-      const [boxChild] = cln.children;
+      // fai un clone del <template>
+      const clone = box.content.cloneNode(true);
+      const [boxChild] = clone.children;
       const [...childInfo] = boxChild.children; // mostrami i figli di .box
-      const info = childInfo.filter(node => node.classList.contains('info')); // tra i figli dammi solo .info
-      const [place, create] = info[0].children; // destrutturazione per prendere i valori  da sovrascrivere
+      const [info] = childInfo.filter(node => node.classList.contains('info')); // tra i figli dammi solo .info
+      const [place, create] = info.children; // destrutturazione per prendere i valori  da sovrascrivere
       place.innerText = planet.name;
       create.innerText = formatted;
-      where.appendChild(cln); // infine ignetta il clone in pagina
+      where.appendChild(clone); // infine ignetta il clone in pagina
     });
   }
 
@@ -59,8 +58,6 @@ class App {
     // se si clicca su un bottone e se il bottone ha come valore search
     // svuota la sezione richiesta e riempila con i dati filtrati provenienti dall'API
     if (from.value !== '' && to.value !== '') {
-      // container.innerHTML = '';
-
       // Filtro che prende 3 input (date)
       this.#planets = this.#planets.filter(planet => {
         // li converte in millesecondi
@@ -79,19 +76,17 @@ class App {
   _changeOrder(e) {
     e.preventDefault();
 
-    // container.innerHTML = '';
     this.#bool = !this.#bool;
     sort.innerText = this.#bool ? '↑' : '↓';
 
-    // e viene stampato a schermo un array in ordine ascendente o discendente in base al click
-    this._render(this._sorting(this.#planets, this.#bool), container);
+    // Viene stampato a schermo un array in ordine ascendente o discendente in base al click
+    this._render(this._sorting(this.#planets), container);
   }
 
   _resetAPI(e) {
     e.preventDefault();
     if (from.value !== '' && to.value !== '') {
       // Reset
-      // container.innerHTML = '';
       from.value = '';
       to.value = '';
       container.classList.remove('visible');
@@ -99,12 +94,12 @@ class App {
     }
   }
 
-  _sorting(what, bool) {
+  _sorting(what) {
     return what.sort((a, b) => {
       const val1 = new Date(a.created).getTime();
       const val2 = new Date(b.created).getTime();
 
-      return bool ? val1 + val2 : val1 - val2;
+      return val1 + val2;
     });
   }
 }
