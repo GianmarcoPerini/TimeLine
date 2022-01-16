@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Asset Management</title>
+  </head>
+  <body>
+    <header>
+      <div class="controll">
+        <div class="controll--title">
+          <h1>TIMELINE</h1>
+          <div class="separator"></div>
+          <p>MY STAR WARS TIMELINE</p>
+        </div>
+        <form class="controll--form">
+          <div class="inline">
+            <input type="date" id="from" />
+            <input type="date" id="to" />
+          </div>
+
+          <div class="button inline">
+            <button id="search">Filter</button>
+            <button id="change">
+              <span id="sort" class="m-1">&darr;</span>
+              <p>Cambia ordine</p>
+            </button>
+            <button id="reset">Resetta</button>
+          </div>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="container"></div>
+      <template>
+        <div class="box">
+          <div class="info">
+            <div class="info__place">Ebrom</div>
+            <div class="info__date">09-12-2015 13:50</div>
+          </div>
+          <div class="time-line"></div>
+        </div>
+      </template>
+    </main>
+  </body>
+</html>

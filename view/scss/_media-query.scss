@@ -1,0 +1,45 @@
+@media screen and (min-width: 1500px) {
+  main .container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main .container {
+    width: 100%;
+  }
+  main .container .box .time-line {
+    margin: 0 40px;
+  }
+
+  main .container .box .info {
+    width: 60%;
+  }
+
+  main .container .box .box--left {
+    left: 100px;
+  }
+  main .container .box .box--right {
+    left: 100px;
+  }
+  .line--right {
+    left: 0px;
+  }
+
+  .controll .controll--form button,
+  .controll .controll--form input {
+    display: flex;
+    align-items: center;
+  }
+
+  main .container .box .info .info--place,
+  main .container .box .info .info--date {
+    text-align: left !important;
+  }
+}

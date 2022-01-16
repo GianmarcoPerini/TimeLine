@@ -1,0 +1,14 @@
+@mixin center-all($direction) {
+     display: flex;
+     flex-direction: $direction;
+     align-items: center;
+     justify-content: center;
+}
+
+@mixin form-style {
+     background-color: $secondary;
+     color: $general;
+     border: none;
+     border-radius: 20px;
+     padding: 15px 25px;
+}
