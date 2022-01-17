@@ -9,7 +9,8 @@ const sort = document.querySelector('#sort');
 const btnSearch = document.querySelector('#search');
 const btnChange = document.querySelector('#change');
 const btnReset = document.querySelector('#reset');
-const box = document.querySelector('template');
+const template = document.querySelector('template');
+// const infos = template.querySelector('.box');
 
 class App {
   #planets;
@@ -41,11 +42,9 @@ class App {
       const formatted = `${data} ${ora}`;
 
       // fai un clone del <template>
-      const clone = box.content.cloneNode(true);
-      const [boxChild] = clone.children;
-      const [...childInfo] = boxChild.children; // mostrami i figli di .box
-      const [info] = childInfo.filter(node => node.classList.contains('info')); // tra i figli dammi solo .info
-      const [place, create] = info.children; // destrutturazione per prendere i valori  da sovrascrivere
+      const clone = template.content.cloneNode(true);
+      const place = clone.querySelector('.info__place');
+      const create = clone.querySelector('.info__date');
       place.innerText = planet.name;
       create.innerText = formatted;
       where.appendChild(clone); // infine ignetta il clone in pagina
