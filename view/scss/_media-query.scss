@@ -20,26 +20,21 @@
 
   main .container .box .info {
     width: 60%;
+    right: 0;
   }
 
-  main .container .box .box--left {
+  main .container .box:nth-child(odd) > .time-line::after,
+  main .container .box:nth-child(even) > .time-line::after {
+    left: 100%;
+  }
+
+  main .container .box:nth-child(even) > .info,
+  main .container .box:nth-child(odd) > .info {
     left: 100px;
   }
-  main .container .box .box--right {
-    left: 100px;
-  }
-  .line--right {
-    left: 0px;
-  }
 
-  .controll .controll--form button,
-  .controll .controll--form input {
-    display: flex;
-    align-items: center;
-  }
-
-  main .container .box .info .info--place,
-  main .container .box .info .info--date {
+  main .container .box .info .info__place,
+  main .container .box .info .info__date {
     text-align: left !important;
   }
 }
